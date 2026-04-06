@@ -1,0 +1,57 @@
+import type { Octokit } from "@octokit/core";
+
+import { iterator } from "./iterator.js";
+import type {
+  MapFunction,
+  PaginationResults,
+  RequestParameters,
+  Route,
+  RequestInterface,
+} from "./types.js";
+
+export function paginate(
+  octokit: Octokit,
+  route: Route | RequestInterface,
+  parameters?: RequestParameters,
+  mapFn?: MapFunction,
+) {
+  if (typeof parameters === "function") {
+    mapFn = parameters;
+    parameters = undefined;
+  }
+
+  return gather(
+    octokit,
+    [],
+    iterator(octokit, route, parameters)[Symbol.asyncIterator](),
+    mapFn,
+  );
+}
+
+function gather(
+  octokit: Octokit,
+  results: PaginationResults,
+  iterator: AsyncIterator<any>,
+  mapFn?: MapFunction,
+): Promise<PaginationResults> {
+  return iterator.next().then((result) => {
+    if (result.done) {
+      return results;
+    }
+
+    let earlyExit = false;
+    function done() {
+      earlyExit = true;
+    }
+
+    results = results.concat(
+      mapFn ? mapFn(result.value, done) : result.value.data,
+    );
+
+    if (earlyExit) {
+      return results;
+    }
+
+    return gather(octokit, results, iterator, mapFn);
+  });
+}

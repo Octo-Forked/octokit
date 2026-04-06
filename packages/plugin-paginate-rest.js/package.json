@@ -1,0 +1,86 @@
+{
+  "name": "@octokit/plugin-paginate-rest",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "type": "module",
+  "version": "0.0.0-development",
+  "description": "Octokit plugin to paginate REST API endpoint responses",
+  "scripts": {
+    "build": "node scripts/build.mjs && tsc -p tsconfig.json",
+    "lint": "prettier --check '{src,test,scripts}/**/*' '!scripts/generated/*' README.md package.json",
+    "lint:fix": "prettier --write '{src,test,scripts}/**/*' '!scripts/generated/*' README.md package.json",
+    "pretest": "npm run -s lint",
+    "test": "vitest run --coverage",
+    "test:ts": "npx tsc --noEmit --declaration --noUnusedLocals --allowImportingTsExtensions --moduleResolution node16 --module node16 --exactOptionalPropertyTypes --strict test/validate-typescript.ts",
+    "update-endpoints": "npm-run-all update-endpoints:*",
+    "update-endpoints:fetch-json": "node scripts/update-endpoints/fetch-json",
+    "update-endpoints:typescript": "node scripts/update-endpoints/typescript"
+  },
+  "repository": "github:octokit/plugin-paginate-rest.js",
+  "keywords": [
+    "github",
+    "api",
+    "sdk",
+    "toolkit"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@octokit/types": "^16.0.0"
+  },
+  "peerDependencies": {
+    "@octokit/core": ">=6"
+  },
+  "devDependencies": {
+    "@octokit/core": "^7.0.6",
+    "@octokit/plugin-rest-endpoint-methods": "^17.0.0",
+    "@octokit/tsconfig": "^4.0.0",
+    "@types/node": "^24.0.0",
+    "@vitest/coverage-v8": "^4.0.0",
+    "esbuild": "^0.27.0",
+    "fetch-mock": "^12.0.0",
+    "github-openapi-graphql-query": "^5.0.0",
+    "npm-run-all2": "^8.0.0",
+    "prettier": "3.6.2",
+    "semantic-release-plugin-update-version-in-files": "^2.0.0",
+    "tinyglobby": "^0.2.15",
+    "typescript": "^5.0.0",
+    "vitest": "^4.0.0"
+  },
+  "release": {
+    "branches": [
+      "+([0-9]).x",
+      "main",
+      "next",
+      {
+        "name": "beta",
+        "prerelease": true
+      }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github",
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "./pkg"
+        }
+      ],
+      [
+        "semantic-release-plugin-update-version-in-files",
+        {
+          "files": [
+            "pkg/dist-web/*",
+            "pkg/dist-node/*",
+            "pkg/*/version.*"
+          ]
+        }
+      ]
+    ]
+  },
+  "engines": {
+    "node": ">= 20"
+  }
+}
