@@ -1,0 +1,76 @@
+{
+  "name": "@octokit/webhooks",
+  "version": "0.0.0-development",
+  "description": "GitHub webhook events toolset for Node.js",
+  "keywords": [],
+  "repository": "github:octokit/webhooks.js",
+  "license": "MIT",
+  "author": "Gregor Martynus (https://twitter.com/gr2m)",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs && tsc -p tsconfig.json",
+    "generate-types": "tsx scripts/generate-types.ts",
+    "lint": "prettier --check 'src/**/*.{ts,json}' 'scripts/**/*' 'test/**/*.ts' README.md package.json 'src/event-handler/README.md'",
+    "lint:fix": "prettier --write 'src/**/*.{ts,json}' 'scripts/**/*' 'test/**/*.ts' README.md package.json 'src/event-handler/README.md'",
+    "pretest": "npm run -s lint",
+    "test": "vitest run",
+    "test:bun": "bun test",
+    "test:deno": "deno test --allow-env --allow-read --allow-net --allow-sys --no-check",
+    "test:node": "node --test",
+    "validate:ts": "tsc --noEmit --noImplicitAny --target es2023 --esModuleInterop --moduleResolution node16 --module node16 --allowImportingTsExtensions test/typescript-validate.ts"
+  },
+  "prettier": {
+    "plugins": [
+      "prettier-plugin-packagejson"
+    ]
+  },
+  "release": {
+    "branches": [
+      "+([0-9]).x",
+      "main",
+      "next",
+      {
+        "name": "beta",
+        "prerelease": true
+      }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github",
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "./pkg"
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "@octokit/openapi-webhooks-types": "12.1.0",
+    "@octokit/request-error": "^7.0.0",
+    "@octokit/webhooks-methods": "^6.0.0"
+  },
+  "devDependencies": {
+    "@octokit/openapi-webhooks": "12.1.0",
+    "@octokit/tsconfig": "^4.0.0",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.0.0",
+    "@vitest/coverage-v8": "^4.0.0",
+    "esbuild": "^0.25.0",
+    "express": "^5.1.0",
+    "get-port": "^7.1.0",
+    "prettier": "3.6.2",
+    "prettier-plugin-packagejson": "^2.2.9",
+    "tsx": "^4.19.3",
+    "typescript": "^5.0.0",
+    "vitest": "^4.0.0"
+  },
+  "engines": {
+    "node": ">= 20"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}
