@@ -1,0 +1,26 @@
+name: Update docs on pushes to main
+"on":
+  push:
+    branches:
+      - main
+jobs:
+  update_docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/create-github-app-token@v2
+        id: app-token
+        with:
+          app-id: ${{ vars.OCTOKIT_APP_ID }}
+          private-key: ${{ secrets.OCTOKIT_APP_PRIVATE_KEY }}
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22 # This version is known working by the docs
+          cache: npm
+      - run: npm ci
+      - run: npm --prefix ./docs ci ./docs
+      - run: npm run build --prefix ./docs -- --prefix-paths
+      - uses: maxheld83/ghpages@master
+        env:
+          BUILD_DIR: docs/public/
+          GH_PAT: ${{ steps.app-token.outputs.token }}
