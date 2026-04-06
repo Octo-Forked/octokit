@@ -45,14 +45,10 @@
     "@octokit/fixtures-server": "^8.1.0",
     "@octokit/request": "^10.0.6",
     "@types/node": "^24.0.0",
-    "@vitest/coverage-v8": "^4.0.0",
     "fetch-mock": "^12.0.0",
-    "glob": "^13.0.0",
     "nock": "^14.0.0-beta.8",
     "semantic-release-plugin-update-version-in-files": "^2.0.0",
-    "tinyglobby": "^0.2.15",
-    "undici": "^7.0.0",
-    "vitest": "^4.0.0"
+    "undici": "^7.0.0"
   },
   "scripts": {
     "build": "node scripts/build.mjs && tsc -p tsconfig.json",

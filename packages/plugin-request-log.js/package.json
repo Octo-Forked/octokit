@@ -25,11 +25,8 @@
   "devDependencies": {
     "@octokit/core": "^7.0.0",
     "@types/node": "^24.0.0",
-    "@vitest/coverage-v8": "^4.0.0",
     "fetch-mock": "^11.0.0",
-    "semantic-release-plugin-update-version-in-files": "^2.0.0",
-    "tinyglobby": "^0.2.13",
-    "vitest": "^4.0.0"
+    "semantic-release-plugin-update-version-in-files": "^2.0.0"
   },
   "release": {
     "plugins": [

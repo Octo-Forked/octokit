@@ -42,12 +42,10 @@
     "@types/lolex": "^5.1.0",
     "@types/node": "^24.0.0",
     "@types/sinonjs__fake-timers": "^15.0.0",
-    "@vitest/coverage-v8": "^4.0.0",
     "fetch-mock": "^12.0.0",
     "proxy": "^2.0.0",
     "semantic-release-plugin-update-version-in-files": "^2.0.0",
-    "undici": "^7.0.0",
-    "vitest": "^4.0.0"
+    "undici": "^7.0.0"
   },
   "release": {
     "branches": [

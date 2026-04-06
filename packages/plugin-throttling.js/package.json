@@ -33,12 +33,9 @@
     "@octokit/core": "^7.0.6",
     "@octokit/request-error": "^7.0.2",
     "@types/node": "^24.0.0",
-    "@vitest/coverage-v8": "^4.0.0",
     "github-openapi-graphql-query": "^5.0.0",
     "npm-run-all2": "^8.0.0",
-    "semantic-release-plugin-update-version-in-files": "^2.0.0",
-    "tinyglobby": "^0.2.15",
-    "vitest": "^4.0.0"
+    "semantic-release-plugin-update-version-in-files": "^2.0.0"
   },
   "release": {
     "branches": [

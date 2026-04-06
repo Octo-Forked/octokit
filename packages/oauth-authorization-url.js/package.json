@@ -25,11 +25,6 @@
   ],
   "author": "Gregor Martynus (https://github.com/gr2m)",
   "license": "MIT",
-  "devDependencies": {
-    "@vitest/coverage-v8": "^4.0.0",
-    "tinyglobby": "^0.2.15",
-    "vitest": "^4.0.0"
-  },
   "release": {
     "branches": [
       "+([0-9]).x",
