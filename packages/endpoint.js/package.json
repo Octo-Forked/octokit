@@ -1,0 +1,76 @@
+{
+  "name": "@octokit/endpoint",
+  "version": "0.0.0-development",
+  "type": "module",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "description": "Turns REST API endpoints into generic request options",
+  "scripts": {
+    "build": "node scripts/build.mjs && tsc -p tsconfig.json",
+    "lint": "prettier --check '{scripts,src,test}/**/*' README.md package.json",
+    "lint:fix": "prettier --write '{scripts,src,test}/**/*' README.md package.json",
+    "pretest": "npm run -s lint",
+    "test": "vitest run --coverage"
+  },
+  "repository": "github:octokit/endpoint.js",
+  "keywords": [
+    "octokit",
+    "github",
+    "api",
+    "rest"
+  ],
+  "author": "Gregor Martynus (https://github.com/gr2m)",
+  "license": "MIT",
+  "devDependencies": {
+    "@octokit/tsconfig": "^4.0.0",
+    "@types/node": "^24.0.0",
+    "@vitest/coverage-v8": "^4.0.0",
+    "esbuild": "^0.27.0",
+    "tinyglobby": "^0.2.15",
+    "prettier": "3.8.1",
+    "semantic-release-plugin-update-version-in-files": "^2.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^4.0.0"
+  },
+  "dependencies": {
+    "@octokit/types": "^16.0.0",
+    "universal-user-agent": "^7.0.2"
+  },
+  "release": {
+    "branches": [
+      "+([0-9]).x",
+      "main",
+      "next",
+      {
+        "name": "beta",
+        "prerelease": true
+      }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github",
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "./pkg"
+        }
+      ],
+      [
+        "semantic-release-plugin-update-version-in-files",
+        {
+          "files": [
+            "pkg/dist-web/*",
+            "pkg/dist-node/*",
+            "pkg/*/version.*"
+          ]
+        }
+      ]
+    ]
+  },
+  "engines": {
+    "node": ">= 20"
+  }
+}
