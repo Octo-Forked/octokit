@@ -1,0 +1,68 @@
+{
+  "name": "@octokit/plugin-request-log",
+  "version": "0.0.0-development",
+  "description": "Log all requests and request errors",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs && tsc -p tsconfig.json",
+    "lint": "prettier --check '{src,test,scripts}/**/*' README.md package.json",
+    "lint:fix": "prettier --write '{src,test,scripts}/**/*' README.md package.json",
+    "pretest": "npm run -s lint",
+    "test": "vitest --coverage"
+  },
+  "repository": "github:octokit/plugin-request-log.js",
+  "keywords": [
+    "github",
+    "api",
+    "sdk",
+    "toolkit"
+  ],
+  "author": "Gregor Martynus (https://twitter.com/gr2m)",
+  "license": "MIT",
+  "peerDependencies": {
+    "@octokit/core": ">=6"
+  },
+  "devDependencies": {
+    "@octokit/core": "^7.0.0",
+    "@octokit/tsconfig": "^4.0.0",
+    "@types/node": "^24.0.0",
+    "@vitest/coverage-v8": "^4.0.0",
+    "esbuild": "^0.27.0",
+    "fetch-mock": "^11.0.0",
+    "prettier": "3.8.1",
+    "semantic-release-plugin-update-version-in-files": "^2.0.0",
+    "tinyglobby": "^0.2.13",
+    "typescript": "^5.0.0",
+    "vitest": "^4.0.0"
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github",
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "./pkg"
+        }
+      ],
+      [
+        "semantic-release-plugin-update-version-in-files",
+        {
+          "files": [
+            "pkg/dist-web/*",
+            "pkg/dist-node/*",
+            "pkg/*/version.*"
+          ]
+        }
+      ]
+    ]
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "engines": {
+    "node": ">= 20"
+  }
+}
