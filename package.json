@@ -1,6 +1,10 @@
 {
   "name": "octokit-workspace",
   "private": true,
+  "scripts": {
+    "lint": "prettier --check .",
+    "lint:fix": "prettier --write ."
+  },
   "workspaces": [
     "packages/*"
   ],
