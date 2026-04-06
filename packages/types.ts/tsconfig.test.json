@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "emitDeclarationOnly": false,
+    "noEmit": true,
+    "declaration": true,
+    "noUnusedLocals": true,
+    "verbatimModuleSyntax": false,
+    "extendedDiagnostics": true
+  },
+  "include": ["test.ts"]
+}

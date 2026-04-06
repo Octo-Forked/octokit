@@ -1,0 +1,81 @@
+{
+  "name": "@octokit/types",
+  "version": "0.0.0-development",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "description": "Shared TypeScript definitions for Octokit projects",
+  "dependencies": {
+    "@octokit/openapi-types": "^27.0.0"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs && tsc -p tsconfig.json",
+    "docs": "typedoc --readme none --out docs src/index.ts && touch docs/.nojekyll",
+    "lint": "prettier --check \"{src,test,scripts}/**/*.{js,mjs,ts,json}\" README.md package.json !src/generated/* !scripts/update-endpoints/generated/*",
+    "lint:fix": "prettier --write \"{src,test,scripts}/**/*.{js,mjs,ts,json}\" README.md package.json !src/generated/* !scripts/update-endpoints/generated/*",
+    "pretest": "npm run -s lint",
+    "test": "tsc --generateTrace ./traces --project tsconfig.test.json",
+    "update-endpoints": "npm-run-all update-endpoints:*",
+    "update-endpoints:fetch-json": "node scripts/update-endpoints/fetch-json.mjs",
+    "update-endpoints:typescript": "node scripts/update-endpoints/typescript.mjs",
+    "update-endpoints:package": "node scripts/update-endpoints/package.mjs"
+  },
+  "repository": "github:octokit/types.ts",
+  "keywords": [
+    "github",
+    "api",
+    "sdk",
+    "toolkit",
+    "typescript"
+  ],
+  "author": "Gregor Martynus (https://twitter.com/gr2m)",
+  "license": "MIT",
+  "devDependencies": {
+    "@octokit/tsconfig": "^4.0.0",
+    "github-openapi-graphql-query": "^5.0.0",
+    "handlebars": "^4.7.6",
+    "npm-run-all2": "^8.0.0",
+    "prettier": "^3.0.0",
+    "semantic-release": "^25.0.0",
+    "semantic-release-plugin-update-version-in-files": "^2.0.0",
+    "sort-keys": "^6.0.0",
+    "typedoc": "^0.28.0",
+    "typescript": "^5.0.0"
+  },
+  "release": {
+    "branches": [
+      "+([0-9]).x",
+      "main",
+      "next",
+      {
+        "name": "beta",
+        "prerelease": true
+      }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github",
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "./pkg"
+        }
+      ],
+      [
+        "semantic-release-plugin-update-version-in-files",
+        {
+          "files": [
+            "pkg/dist-src/VERSION.js",
+            "pkg/dist-types/VERSION.d.ts",
+            "pkg/*/index.js"
+          ]
+        }
+      ]
+    ]
+  },
+  "octokit": {
+    "openapi-version": "21.0.0"
+  }
+}
