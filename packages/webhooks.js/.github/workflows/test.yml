@@ -57,7 +57,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
       - run: bun install
       - run: bun test
-            
+
   validate-typescript:
     runs-on: ubuntu-latest
     steps:

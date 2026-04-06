@@ -1,9 +1,7 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "labels": ["Type: Maintenance"],
-  "extends": [
-    "config:base",
-    ":disableDependencyDashboard"
-  ],
+  "extends": ["config:base", ":disableDependencyDashboard"],
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": ["before 5am on monday"],
@@ -29,10 +27,7 @@
     },
     {
       "groupName": "express",
-      "matchPackageNames": [
-        "@types/express",
-        "express"
-      ]
+      "matchPackageNames": ["@types/express", "express"]
     }
   ],
   "postUpdateOptions": ["npmDedupe"]

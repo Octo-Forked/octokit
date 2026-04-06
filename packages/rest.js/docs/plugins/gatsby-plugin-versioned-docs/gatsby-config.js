@@ -7,15 +7,15 @@ function createEndpointsSource(version, branch) {
       name: version + `-endpoints`,
       remote: `https://github.com/octokit/plugin-rest-endpoint-methods.js.git`,
       branch,
-      patterns: `docs/**`
-    }
+      patterns: `docs/**`,
+    },
   };
 }
 
 module.exports = ({ currentVersion, versions }) => ({
   plugins: [
     // source remote endpoints data for the current version
-    createEndpointsSource(currentVersion, 'main'),
+    createEndpointsSource(currentVersion, "main"),
     // map over the version config object and add git sources
     // for their docs from this repo and generated endpoint method docs
     ...versions.flatMap(({ name, branch, endpoints }) => [
@@ -25,10 +25,10 @@ module.exports = ({ currentVersion, versions }) => ({
           name,
           remote: `https://github.com/octokit/rest.js.git`,
           branch,
-          patterns: `docs/src/pages/api/**`
-        }
+          patterns: `docs/src/pages/api/**`,
+        },
       },
-      createEndpointsSource(name, endpoints)
-    ])
-  ]
+      createEndpointsSource(name, endpoints),
+    ]),
+  ],
 });

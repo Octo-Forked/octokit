@@ -14,13 +14,13 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
     createNodeField({
       node,
       name: `slug`,
-      value: slug
+      value: slug,
     });
 
     createNodeField({
       node,
       name: `idName`,
-      value: idName
+      value: idName,
     });
 
     // save the file's directory so it can be used by the Template
@@ -28,7 +28,7 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
     createNodeField({
       node,
       name: `parentRelativeDirectory`,
-      value: parent.relativeDirectory
+      value: parent.relativeDirectory,
     });
 
     // set a version field on pages so they can be queried
@@ -42,7 +42,7 @@ exports.onCreateNode = ({ node, getNode, actions }, pluginOptions) => {
     createNodeField({
       node,
       name: `version`,
-      value: version
+      value: version,
     });
   }
 };
@@ -67,11 +67,11 @@ exports.createPages = async ({ actions, graphql }, pluginOptions) => {
 
   const versions = [
     pluginOptions.currentVersion,
-    ...data.allGitRemote.nodes.map(remote => remote.sourceInstanceName)
+    ...data.allGitRemote.nodes.map((remote) => remote.sourceInstanceName),
   ];
 
   // create a page for each version sourced from git
-  versions.forEach(version => {
+  versions.forEach((version) => {
     createPage({
       path: `/` + version,
       component,
@@ -79,8 +79,8 @@ exports.createPages = async ({ actions, graphql }, pluginOptions) => {
         // specify git source names in the same format as they were
         // configured in gatsby-config.js
         version,
-        endpoints: version + `-endpoints`
-      }
+        endpoints: version + `-endpoints`,
+      },
     });
   });
 };

@@ -26,11 +26,11 @@ const createIssueOptions = {
 };
 const result = endpoint(
   "POST /repos/{owner}/{repo}/issues",
-  createIssueOptions
+  createIssueOptions,
 );
 const resultMerge = endpoint.merge(
   "POST /repos/{owner}/{repo}/issues",
-  createIssueOptions
+  createIssueOptions,
 );
 const resultMerge2 = endpoint.merge(createIssueOptions);
 
@@ -57,7 +57,7 @@ const listForRef = {} as {
       Omit<
         Endpoints["GET /repos/{owner}/{repo}/commits/{ref}/check-runs"]["parameters"],
         "baseUrl" | "headers" | "mediaType"
-      >
+      >,
   ): Promise<Endpoints[typeof checkRunsRoute]["response"]>;
   defaults: RequestInterface["defaults"];
   endpoint: EndpointInterface<{

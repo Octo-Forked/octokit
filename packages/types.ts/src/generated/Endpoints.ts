@@ -78,12 +78,15 @@ interface OctokitResponseType<
 interface ReadonlyOperation<
   Url extends keyof paths,
   Method extends keyof paths[Url],
-> extends OctokitParametersType<Url, Method>,
+>
+  extends
+    OctokitParametersType<Url, Method>,
     OctokitResponseType<Url, Method>,
     OctokitReadonlyRequestType<Url, Method> {}
 
 interface Operation<Url extends keyof paths, Method extends keyof paths[Url]>
-  extends OctokitParametersType<Url, Method>,
+  extends
+    OctokitParametersType<Url, Method>,
     OctokitResponseType<Url, Method>,
     OctokitWriteableRequestType<Url, Method> {}
 type SuccessStatuses = 200 | 201 | 202 | 204 | 205;
