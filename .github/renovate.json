@@ -9,7 +9,6 @@
     "schedule": ["before 5am on monday"],
     "automerge": true,
     "automergeType": "branch",
-    "matchJsonata": "$exists(isLockfileUpdate) = false"
   },
   "rangeStrategy": "replace",
   "semanticCommitType": "build",
@@ -20,7 +19,8 @@
     },
     {
       "depTypeList": ["dependencies", "peerDependencies"],
-      "semanticCommitType": "fix"
+      "semanticCommitType": "fix",
+      "matchJsonata": "$exists(isLockfileUpdate) = false"
     },
     {
       "depTypeList": ["action"],
