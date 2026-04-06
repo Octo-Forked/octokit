@@ -1,0 +1,7 @@
+{
+  "name": "octokit-workspace",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
