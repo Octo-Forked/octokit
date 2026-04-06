@@ -1,0 +1,63 @@
+{
+  "name": "@octokit/auth-token",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "type": "module",
+  "version": "0.0.0-development",
+  "description": "GitHub API token authentication for browsers and Node.js",
+  "scripts": {
+    "build": "node scripts/build.mjs && tsc -p tsconfig.json",
+    "test": "vitest run --coverage",
+    "pretest": "npm run -s lint",
+    "lint": "prettier --check '{src,test}/**/*.{ts,md}' '*.md' package.json",
+    "lint:fix": "prettier --write '{src,test}/**/*.{ts,md}' '*.md' package.json"
+  },
+  "repository": "github:octokit/auth-token.js",
+  "keywords": [
+    "github",
+    "octokit",
+    "authentication",
+    "api"
+  ],
+  "author": "Gregor Martynus (https://github.com/gr2m)",
+  "license": "MIT",
+  "devDependencies": {
+    "@octokit/request": "^10.0.2",
+    "@octokit/tsconfig": "^4.0.0",
+    "@octokit/types": "^16.0.0",
+    "@vitest/coverage-v8": "^4.0.0",
+    "esbuild": "^0.27.0",
+    "fetch-mock": "^12.0.0",
+    "prettier": "3.7.4",
+    "tinyglobby": "^0.2.15",
+    "typescript": "^5.3.0",
+    "vitest": "^4.0.0"
+  },
+  "release": {
+    "branches": [
+      "+([0-9]).x",
+      "main",
+      "next",
+      {
+        "name": "beta",
+        "prerelease": true
+      }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github",
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "./pkg"
+        }
+      ]
+    ]
+  },
+  "engines": {
+    "node": ">= 20"
+  }
+}
