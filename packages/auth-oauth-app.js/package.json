@@ -1,0 +1,82 @@
+{
+  "name": "@octokit/auth-oauth-app",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "type": "module",
+  "version": "0.0.0-development",
+  "description": "GitHub OAuth App authentication for JavaScript",
+  "scripts": {
+    "build": "node scripts/build.mjs && tsc -p tsconfig.json",
+    "lint": "prettier --check '{src,test,scripts}/**/*' README.md package.json",
+    "lint:fix": "prettier --write '{src,test,scripts}/**/*' README.md package.json",
+    "pretest": "npm run -s lint",
+    "test": "vitest run --coverage"
+  },
+  "repository": "github:octokit/auth-oauth-app.js",
+  "keywords": [
+    "github",
+    "octokit",
+    "authentication",
+    "oauth",
+    "api"
+  ],
+  "author": "Gregor Martynus (https://github.com/gr2m)",
+  "license": "MIT",
+  "dependencies": {
+    "@octokit/auth-oauth-device": "^8.0.3",
+    "@octokit/auth-oauth-user": "^6.0.2",
+    "@octokit/request": "^10.0.6",
+    "@octokit/types": "^16.0.0",
+    "universal-user-agent": "^7.0.0"
+  },
+  "devDependencies": {
+    "@octokit/core": "^7.0.6",
+    "@octokit/tsconfig": "^4.0.0",
+    "@types/node": "^24.0.0",
+    "@vitest/coverage-v8": "^4.0.0",
+    "esbuild": "^0.27.0",
+    "fetch-mock": "^12.0.0",
+    "prettier": "3.8.1",
+    "semantic-release-plugin-update-version-in-files": "^2.0.0",
+    "tinyglobby": "^0.2.13",
+    "typescript": "^6.0.0",
+    "vitest": "^4.0.0"
+  },
+  "release": {
+    "branches": [
+      "+([0-9]).x",
+      "main",
+      "next",
+      {
+        "name": "beta",
+        "prerelease": true
+      }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github",
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "./pkg"
+        }
+      ],
+      [
+        "semantic-release-plugin-update-version-in-files",
+        {
+          "files": [
+            "pkg/dist-web/*",
+            "pkg/dist-node/*",
+            "pkg/*/version.*"
+          ]
+        }
+      ]
+    ]
+  },
+  "engines": {
+    "node": ">= 20"
+  }
+}
