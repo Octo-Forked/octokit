@@ -1,0 +1,82 @@
+{
+  "name": "@octokit/plugin-throttling",
+  "version": "0.0.0-development",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "type": "module",
+  "description": "Octokit plugin for GitHub's recommended request throttling",
+  "scripts": {
+    "build": "node scripts/build.mjs && tsc -p tsconfig.json",
+    "lint": "prettier --check '{src,scripts,test}/**/*' '!*/generated/**' README.md package.json",
+    "lint:fix": "prettier --write '{src,scripts,test}/**/*' '!*/generated/**' README.md package.json",
+    "pretest": "npm run -s lint",
+    "test": "vitest run --coverage",
+    "update-endpoints": "npm-run-all update-endpoints:*",
+    "update-endpoints:fetch-json": "node scripts/update-endpoints/fetch-json.js",
+    "update-endpoints:code": "node scripts/update-endpoints/code.js",
+    "validate:ts": "tsc --ignoreConfig --noEmit --noImplicitAny --target es2022 --strict --esModuleInterop --moduleResolution node16 --module node18 --exactOptionalPropertyTypes test/typescript-validate.ts"
+  },
+  "repository": "github:octokit/plugin-throttling.js",
+  "author": "Simon Grondin (http://github.com/SGrondin)",
+  "license": "MIT",
+  "dependencies": {
+    "@octokit/types": "^16.0.0",
+    "bottleneck": "^2.15.3"
+  },
+  "peerDependencies": {
+    "@octokit/core": "^7.0.0"
+  },
+  "devDependencies": {
+    "@octokit/auth-app": "^8.1.2",
+    "@octokit/core": "^7.0.6",
+    "@octokit/request-error": "^7.0.2",
+    "@octokit/tsconfig": "^4.0.0",
+    "@types/node": "^24.0.0",
+    "@vitest/coverage-v8": "^4.0.0",
+    "esbuild": "^0.27.0",
+    "github-openapi-graphql-query": "^5.0.0",
+    "npm-run-all2": "^8.0.0",
+    "prettier": "3.8.1",
+    "semantic-release-plugin-update-version-in-files": "^2.0.0",
+    "tinyglobby": "^0.2.15",
+    "typescript": "^6.0.0",
+    "vitest": "^4.0.0"
+  },
+  "release": {
+    "branches": [
+      "+([0-9]).x",
+      "main",
+      "next",
+      {
+        "name": "beta",
+        "prerelease": true
+      }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github",
+      [
+        "@semantic-release/npm",
+        {
+          "pkgRoot": "./pkg"
+        }
+      ],
+      [
+        "semantic-release-plugin-update-version-in-files",
+        {
+          "files": [
+            "pkg/dist-web/*",
+            "pkg/dist-node/*",
+            "pkg/*/version.*"
+          ]
+        }
+      ]
+    ]
+  },
+  "engines": {
+    "node": ">= 20"
+  }
+}
