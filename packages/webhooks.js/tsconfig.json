@@ -1,12 +1,5 @@
 {
-  "extends": "./node_modules/@octokit/tsconfig/tsconfig.json",
-  "include": ["src/**/*"],
-  "ts-node": {
-    "compilerOptions": {
-      "allowImportingTsExtensions": true,
-      "verbatimModuleSyntax": false
-    }
-  },
+  "extends": "@octokit/tsconfig",
   "compilerOptions": {
     "allowImportingTsExtensions": true,
     "erasableSyntaxOnly": true,
@@ -14,6 +7,9 @@
     "declaration": true,
     "outDir": "pkg/dist-types",
     "emitDeclarationOnly": true,
-    "sourceMap": true
-  }
+    "sourceMap": true,
+    "rootDir": "./src",
+    "types": ["node"]
+  },
+  "include": ["src/**/*"]
 }
