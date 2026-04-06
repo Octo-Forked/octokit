@@ -9,7 +9,7 @@
     "schedule": ["before 5am on monday"],
     "automerge": true,
     "automergeType": "branch",
-    "autoMergeStrategy": "squash"
+    "matchJsonata": "$exists(isLockfileUpdate) = false"
   },
   "rangeStrategy": "replace",
   "semanticCommitType": "build",
@@ -26,6 +26,13 @@
       "depTypeList": ["action"],
       "semanticCommitType": "ci",
       "semanticCommitScope": "action"
+    },
+    {
+      "groupName": "express",
+      "matchPackageNames": [
+        "@types/express",
+        "express",
+      ]
     }
   ],
   "postUpdateOptions": ["npmDedupe"]
