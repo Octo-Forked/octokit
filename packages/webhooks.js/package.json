@@ -54,7 +54,7 @@
   "devDependencies": {
     "@octokit/openapi-webhooks": "12.1.0",
     "@types/express": "^5.0.1",
-    "@types/node": "^22.0.0",
+    "@types/node": "^24.0.0",
     "express": "^5.1.0",
     "get-port": "^7.1.0",
     "tsx": "^4.19.3"
