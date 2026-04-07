@@ -55,7 +55,7 @@ jobs:
         with:
           deno-version: v2.x # Run with latest stable Deno.
       - run: deno install
-      - run: deno test packages/webhooks.js/test/** packages/webhooks-methods.js/test/deno/** --allow-env --allow-read --allow-net --allow-sys --no-check
+      - run: deno test packages/webhooks.js/test/**/*.test.ts packages/webhooks-methods.js/test/deno/** --allow-env --allow-read --allow-net --allow-sys --no-check
 
   test-bun:
     runs-on: ubuntu-latest
