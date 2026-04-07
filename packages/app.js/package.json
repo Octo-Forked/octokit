@@ -12,7 +12,6 @@
     "build": "node scripts/build.mjs && tsc -p tsconfig.json",
     "lint": "prettier --check {src,test}/* *.md package.json",
     "lint:fix": "prettier --write {src,test}/* *.md package.json",
-    "pretest": "npm run -s lint",
     "test:typescript": "npx tsc --ignoreConfig --allowImportingTsExtensions --noEmit --declaration --noUnusedLocals --esModuleInterop --strict --target es2022 --moduleResolution node16 --module node20 --exactOptionalPropertyTypes test/typescript-validate.ts"
   },
   "repository": "github:octokit/app.js",

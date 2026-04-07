@@ -7,7 +7,6 @@
     "build": "node scripts/build.mjs && tsc -p tsconfig.json",
     "lint": "prettier --check '{src,test,scripts}/**/*' '!scripts/update-endpoints/generated/**' '!src/generated/**' README.md package.json",
     "lint:fix": "prettier --write '{src,test,scripts}/**/*' '!scripts/update-endpoints/generated/**' '!src/generated/**' README.md package.json",
-    "pretest": "npm run -s lint",
     "update-endpoints": "npm run update-endpoints:fetch-json && npm run update-endpoints:code && npm run update-endpoints:docs && npm run update-endpoints:types",
     "update-endpoints:fetch-json": "node scripts/update-endpoints/fetch-json.mjs",
     "update-endpoints:code": "node scripts/update-endpoints/code.mjs",

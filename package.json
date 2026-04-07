@@ -4,6 +4,7 @@
   "scripts": {
     "lint": "prettier --check .",
     "lint:fix": "prettier --write .",
+    "pretest": "npm run -s lint",
     "test": "vitest run",
     "build": "npm run --workspaces build"
   },

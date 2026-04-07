@@ -12,7 +12,6 @@
     "build": "node scripts/build.mjs && tsc -p tsconfig.json",
     "lint": "prettier --check '{src,test,scripts}/**/*' README.md package.json",
     "lint:fix": "prettier --write '{src,test,scripts}/**/*' README.md package.json",
-    "pretest": "npm run -s lint",
     "test": "npm run -s test:node && npm run -s test:web",
     "test:node": "vitest run --coverage",
     "test:web": "npm run test:deno && npm run test:browser",

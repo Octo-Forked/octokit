@@ -11,7 +11,6 @@
     "build": "node scripts/build.mjs && tsc -p tsconfig.json",
     "lint": "prettier --check '{src,test}/**/*.{ts,md}' README.md package.json",
     "lint:fix": "prettier --write '{src,test}/**/*.{ts,md}' README.md package.json",
-    "pretest": "npm run -s lint",
     "test": "vitest --coverage",
     "test:typescript": "npx tsc --ignoreConfig--noEmit --declaration --noUnusedLocals --module node20 --moduleResolution node16 --allowImportingTsExtensions --exactOptionalPropertyTypes --strict test/typescript-validate.ts"
   },

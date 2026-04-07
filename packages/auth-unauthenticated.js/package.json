@@ -11,8 +11,7 @@
     "build": "node scripts/build.mjs && tsc -p tsconfig.json",
     "lint": "prettier --check 'src/**/*.ts' 'test/**/*.ts' '*.md' package.json",
     "lint:fix": "prettier --write 'src/**/*.ts' 'test/**/*.ts' '*.md' package.json",
-    "pretest": "npm run lint -s",
-    "test": "vitest run --coverage"
+    "pretest": "npm run lint -s"
   },
   "repository": "github:octokit/auth-unauthenticated.js",
   "keywords": [

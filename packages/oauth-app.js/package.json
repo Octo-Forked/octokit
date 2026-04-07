@@ -7,7 +7,6 @@
     "build": "node scripts/build.mjs && tsc -p tsconfig.json",
     "lint": "prettier --check '{src,test}/**/*' README.md package.json",
     "lint:fix": "prettier --write '{src,test}/**/*' README.md package.json",
-    "pretest": "npm run -s lint",
     "test:typescript": "npx tsc --ignoreConfig --noEmit --declaration --noUnusedLocals --allowImportingTsExtensions --moduleResolution node16 --module node20 --exactOptionalPropertyTypes --strict test/typescript-validate.ts"
   },
   "repository": "github:octokit/oauth-app.js",
