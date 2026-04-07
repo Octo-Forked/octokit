@@ -1,5 +1,5 @@
 {
-  "extends": "@octokit/tsconfig",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "esModuleInterop": true,
     "declaration": true,
@@ -8,7 +8,7 @@
     "sourceMap": true,
     "verbatimModuleSyntax": false,
     "rootDir": "./src",
-    "lib": ["es2022", "dom"]
+    "lib": ["es2023", "dom"]
   },
   "include": ["src/**/*"]
 }

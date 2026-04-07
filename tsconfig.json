@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "lib": ["es2023"],
+    "module": "node20",
+    "moduleResolution": "node16",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true,
+    "target": "es2023",
+    "resolveJsonModule": true,
+    "verbatimModuleSyntax": true,
+    "exactOptionalPropertyTypes": true,
+    "types": ["node"]
+  }
+}

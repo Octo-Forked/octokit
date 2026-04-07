@@ -1,5 +1,5 @@
 {
-  "extends": "@octokit/tsconfig",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "exactOptionalPropertyTypes": false,
     "esModuleInterop": true,
@@ -7,8 +7,7 @@
     "outDir": "pkg/dist-types",
     "emitDeclarationOnly": true,
     "sourceMap": true,
-    "rootDir": "./src",
-    "types": ["node"]
+    "rootDir": "./src"
   },
   "include": ["src/**/*"]
 }

@@ -17,7 +17,7 @@
     "test:bun": "bun test",
     "test:deno": "deno test --allow-env --allow-read --allow-net --allow-sys --no-check",
     "test:node": "node --test",
-    "validate:ts": "tsc --noEmit --noImplicitAny --target es2023 --esModuleInterop --moduleResolution node16 --module node16 --allowImportingTsExtensions test/typescript-validate.ts"
+    "validate:ts": "tsc --ignoreConfig --noEmit --noImplicitAny --target es2023 --esModuleInterop --moduleResolution node16 --module node20 --allowImportingTsExtensions --types node test/typescript-validate.ts"
   },
   "prettier": {
     "plugins": [
