@@ -48,7 +48,7 @@ jobs:
         with:
           deno-version: v2.x # Run with latest stable Deno.
       - run: deno install
-      - run: deno test packages/webhooks/test/** packages/webhooks-methods/test/** --allow-env --allow-read --allow-net --allow-sys --no-check
+      - run: deno test packages/webhooks/test/** packages/webhooks-methods/test/deno/** --allow-env --allow-read --allow-net --allow-sys --no-check
 
   test-bun:
     runs-on: ubuntu-latest
@@ -67,7 +67,7 @@ jobs:
           cache: npm
           node-version: lts/*
       - run: npm ci
-      - run: npm run --workspaces validate:ts
+      - run: npm run --workspaces --if-present validate:ts
 
   test:
     runs-on: ubuntu-latest
