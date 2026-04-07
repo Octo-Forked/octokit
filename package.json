@@ -3,13 +3,16 @@
   "private": true,
   "scripts": {
     "lint": "prettier --check .",
-    "lint:fix": "prettier --write ."
+    "lint:fix": "prettier --write .",
+    "test": "npm run --workspaces test",
+    "build": "npm run --workspaces build"
   },
   "workspaces": [
     "packages/*"
   ],
   "devDependencies": {
     "@octokit/tsconfig": "^4.0.0",
+    "@types/node": "^25.5.2",
     "@vitest/coverage-v8": "^4.1.2",
     "@vitest/ui": "^4.1.2",
     "esbuild": "^0.28.0",
