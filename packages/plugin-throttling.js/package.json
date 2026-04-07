@@ -12,7 +12,6 @@
     "lint": "prettier --check '{src,scripts,test}/**/*' '!*/generated/**' README.md package.json",
     "lint:fix": "prettier --write '{src,scripts,test}/**/*' '!*/generated/**' README.md package.json",
     "pretest": "npm run -s lint",
-    "test": "vitest run --coverage",
     "update-endpoints": "npm-run-all update-endpoints:*",
     "update-endpoints:fetch-json": "node scripts/update-endpoints/fetch-json.js",
     "update-endpoints:code": "node scripts/update-endpoints/code.js",

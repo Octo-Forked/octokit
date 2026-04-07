@@ -13,7 +13,6 @@
     "lint": "prettier --check 'src/**/*.{ts,json}' 'scripts/**/*' 'test/**/*.ts' README.md package.json 'src/event-handler/README.md'",
     "lint:fix": "prettier --write 'src/**/*.{ts,json}' 'scripts/**/*' 'test/**/*.ts' README.md package.json 'src/event-handler/README.md'",
     "pretest": "npm run -s lint",
-    "test": "vitest run",
     "test:bun": "bun test",
     "test:deno": "deno test --allow-env --allow-read --allow-net --allow-sys --no-check",
     "test:node": "node --test",

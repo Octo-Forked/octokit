@@ -56,7 +56,6 @@
     "lint:fix": "prettier --write \"{src,test}/**/*.{js,json,ts}\" \"docs/*.js\" docs/package.json \"docs/src/**/*\" *.md package.json",
     "start-fixtures-server": "octokit-fixtures-server",
     "pretest": "npm run -s lint",
-    "test": "vitest run --coverage",
     "test:typescript": "npx tsc --ignoreConfig --noEmit --declaration --allowImportingTsExtensions --moduleResolution node16 --module node20 --noUnusedLocals --exactOptionalPropertyTypes --strict test/typescript-validate.ts"
   },
   "license": "MIT",

@@ -44,7 +44,7 @@ jobs:
       - run: npm ci
       - run: npm run -w packages/rest.js start-fixtures-server &
       - run: sleep 3
-      - run: npm run --workspaces test
+      - run: npm run test
 
   test-deno:
     runs-on: ubuntu-latest
