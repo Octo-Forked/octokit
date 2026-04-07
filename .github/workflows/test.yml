@@ -42,6 +42,8 @@ jobs:
           node-version: ${{ matrix.node_version }}
           cache: npm
       - run: npm ci
+      - run: npm run -w packages/rest.js start-fixtures-server &
+      - run: sleep 3
       - run: npm run --workspaces test
 
   test-deno:
