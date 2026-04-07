@@ -9,36 +9,35 @@ name: Update
       version:
         description: Version of https://www.npmjs.com/package/@octokit/openapi
         required: true
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
 jobs:
   update_routes:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/create-github-app-token@v2
-        id: app-token
-        with:
-          app-id: ${{ vars.OCTOKIT_APP_ID }}
-          private-key: ${{ secrets.OCTOKIT_APP_PRIVATE_KEY }}
       - uses: actions/checkout@v6
         with:
-          token: ${{ steps.app-token.outputs.token }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v6
         with:
           node-version: lts/*
           cache: npm
       - run: git checkout routes-update || true
-      - run: npm install @octokit/types@latest
+      - run: npm install -w packages/endpoint.js @octokit/types@latest
         if: >-
           github.event_name == 'repository_dispatch' && github.event.action ==
           'octokit/types.ts release'
       - run: npm ci
       - run: rm -rf docs/
-      - run: npm run update-endpoints
+      - run: npm run -w packages/endpoint.js update-endpoints
         if: >-
           github.event_name == 'repository_dispatch' && github.event.action ==
           'octokit/openapi release'
         env:
           VERSION: ${{ github.event.client_payload.release.tag_name }}
-      - run: npm run update-endpoints
+      - run: npm run -w packages/endpoint.js update-endpoints
         if: github.event_name == 'workflow_dispatch'
         env:
           VERSION: ${{ github.event.inputs.version }}
@@ -49,7 +48,7 @@ jobs:
           github.event_name == 'repository_dispatch' && github.event.action ==
           'octokit/types.ts release'
         id: openapi_types
-      - run: npm run update-endpoints
+      - run: npm run -w packages/endpoint.js update-endpoints
         if: >-
           github.event_name == 'repository_dispatch' && github.event.action ==
           'octokit/types.ts release'
@@ -58,7 +57,7 @@ jobs:
       - name: Create Pull Request
         uses: gr2m/create-or-update-pull-request-action@v1.x
         env:
-          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           title: 🚧 GitHub OpenAPI specifications changed
           body: >
@@ -90,5 +89,4 @@ jobs:
             `feat(deprecation)` if a method was deprecated.
           branch: openapi-update
           commit-message: WIP octokit/openapi updated
-          author: Octokit Bot <33075676+octokitbot@users.noreply.github.com>
           labels: "Type: Maintenance"
