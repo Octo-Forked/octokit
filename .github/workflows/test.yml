@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - dependabot/npm_and_yarn/**
+      - main
+      - next
+      - beta
+      - v[0-9]+
   pull_request:
     types:
       - opened
