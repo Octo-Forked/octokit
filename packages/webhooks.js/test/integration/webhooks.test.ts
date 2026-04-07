@@ -5,7 +5,7 @@ import { sign } from "@octokit/webhooks-methods";
 import { Webhooks } from "../../src/index.ts";
 
 const pushEventPayloadString = readFileSync(
-  "test/fixtures/push-payload.json",
+  new URL("../fixtures/push-payload.json", import.meta.url),
   "utf-8",
 );
 

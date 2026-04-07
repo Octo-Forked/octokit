@@ -7,7 +7,7 @@ export async function verifyWithFallback(
   payload: string,
   signature: string,
   additionalSecrets: undefined | string[],
-): Promise<any> {
+): Promise<boolean> {
   const firstPass = await verify(secret, payload, signature);
 
   if (firstPass) {

@@ -2,7 +2,7 @@ export function handleResponse(
   body: string | null,
   status = 200 as number,
   headers = {} as Record<string, string>,
-) {
+): Response {
   if (body !== null) {
     headers["content-length"] = body.length.toString();
   }

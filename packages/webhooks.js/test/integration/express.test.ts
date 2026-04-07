@@ -9,7 +9,7 @@ import { describe, it, assert } from "../testrunner.ts";
 import { createNodeMiddleware, Webhooks } from "../../src/index.ts";
 
 const pushEventPayload = readFileSync(
-  "test/fixtures/push-payload.json",
+  new URL("../fixtures/push-payload.json", import.meta.url),
   "utf-8",
 );
 

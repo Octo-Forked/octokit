@@ -10,7 +10,7 @@ import getPort from "get-port";
 import { concatUint8Array } from "../../src/concat-uint8array.ts";
 
 const pushEventPayload = readFileSync(
-  "test/fixtures/push-payload.json",
+  new URL("../fixtures/push-payload.json", import.meta.url),
   "utf-8",
 );
 

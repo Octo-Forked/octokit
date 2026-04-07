@@ -10,7 +10,7 @@ import { createNodeMiddleware, Webhooks } from "../../src/index.ts";
 import { instantiateTestServer } from "../helpers/test-server.ts";
 
 const pushEventPayload = readFileSync(
-  "test/fixtures/push-payload.json",
+  new URL("../fixtures/push-payload.json", import.meta.url),
   "utf-8",
 );
 

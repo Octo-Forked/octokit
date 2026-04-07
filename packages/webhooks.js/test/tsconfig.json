@@ -2,7 +2,8 @@
   "extends": "..",
   "compilerOptions": {
     "verbatimModuleSyntax": false,
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "rootDirs": ["../src", "../test"]
   },
   "include": ["**/*.ts"]
 }

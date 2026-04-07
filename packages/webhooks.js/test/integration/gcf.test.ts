@@ -10,7 +10,7 @@ import { createNodeMiddleware, Webhooks } from "../../src/index.ts";
 import getPort from "get-port";
 
 const pushEventPayload = readFileSync(
-  "test/fixtures/push-payload.json",
+  new URL("../fixtures/push-payload.json", import.meta.url),
   "utf-8",
 );
 

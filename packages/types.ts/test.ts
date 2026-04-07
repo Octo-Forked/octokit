@@ -1,5 +1,5 @@
 // This code is not executed, only statically analyzed using `tsc --noEmit`
-import {
+import type {
   EndpointInterface,
   Endpoints,
   RequestInterface,
