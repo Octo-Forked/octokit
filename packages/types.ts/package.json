@@ -33,7 +33,7 @@
   "devDependencies": {
     "github-openapi-graphql-query": "^5.0.0",
     "handlebars": "^4.7.6",
-    "npm-run-all2": "^8.0.0",
+    "npm-run-all2": "^9.0.0",
     "semantic-release-plugin-update-version-in-files": "^2.0.0",
     "sort-keys": "^6.0.0",
     "typedoc": "^0.28.0"
