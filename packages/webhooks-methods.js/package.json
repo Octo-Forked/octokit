@@ -30,7 +30,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^24.0.0",
-    "puppeteer": "^24.0.0",
+    "puppeteer": "^25.0.0",
     "semantic-release-plugin-update-version-in-files": "^2.0.0"
   },
   "release": {
